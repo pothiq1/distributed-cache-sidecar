@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Distributed Cache Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="app">
+        <header-component @navigate="navigate"></header-component>
+        <div class="container" style="margin-top: 70px;">
+            <component :is="currentView"></component>
+        </div>
+        <footer-component></footer-component>
+    </div>
+
+    <!-- Include Vue.js, jQuery, and Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Include components -->
+    <script src="components/Header.vue.js"></script>
+    <script src="components/Footer.vue.js"></script>
+    <script src="components/CacheStats.vue.js"></script>
+    <script src="components/CacheSearch.vue.js"></script>
+    <script src="components/TransactionManager.vue.js"></script>
+    <script src="components/Configuration.vue.js"></script>
+
+    <!-- Main app script -->
+    <script src="app.js"></script>
+</body>
+
+</html>

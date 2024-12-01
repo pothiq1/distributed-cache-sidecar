@@ -1,0 +1,39 @@
+/* styles.css */
+
+/* General styles */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Footer styles */
+.footer {
+    background-color: #f5f5f5;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Header styles */
+.navbar-brand {
+    font-size: 24px;
+}
+
+/* Cache Statistics Table */
+.cache-stats table {
+    margin-top: 20px;
+}
+
+.cache-stats h2 {
+    margin-top: 0;
+}
+
+/* Transaction Manager */
+.transaction-manager {
+    margin-top: 40px;
+}
+
+.transaction-manager h2 {
+    margin-bottom: 20px;
+}

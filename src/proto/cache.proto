@@ -1,0 +1,82 @@
+// src/proto/cache.proto
+
+syntax = "proto3";
+
+package cache;
+
+service CacheService {
+  rpc Get (CacheKey) returns (CacheValue) {}
+  rpc Put (CacheEntry) returns (PutResponse) {}
+  rpc BeginTransaction (TransactionRequest) returns (TransactionResponse) {}
+  rpc CommitTransaction (TransactionRequest) returns (TransactionResponse) {}
+  rpc RollbackTransaction (TransactionRequest) returns (TransactionResponse) {}
+  rpc ListenEvents (EventRequest) returns (stream EventResponse) {}
+  rpc BatchGet (BatchKeys) returns (BatchValues) {}
+  rpc BatchPut (BatchEntries) returns (BatchPutResponse) {}
+  rpc Evict (CacheKey) returns (EvictResponse) {}
+  rpc Refresh (CacheKey) returns (CacheValue) {}
+}
+
+message CacheKey {
+  string key = 1;
+}
+
+message CacheValue {
+  bytes value = 1;
+  bool found = 2;
+}
+
+message CacheEntry {
+  string key = 1;
+  bytes value = 2;
+  int64 ttl = 3;
+}
+
+message PutResponse {
+  bool success = 1;
+}
+
+message TransactionRequest {
+  string transaction_id = 1;
+}
+
+message TransactionResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+enum EventType {
+  Put = 0;
+  Evict = 1;
+  Expire = 2;
+}
+
+
+message EventRequest {
+  repeated EventType event_types = 1;
+}
+
+message EventResponse {
+  EventType event_type = 1;
+  CacheEntry entry = 2;
+}
+
+message BatchKeys {
+  repeated string keys = 1;
+}
+
+message BatchValues {
+  map<string, CacheValue> values = 1;
+}
+
+message BatchEntries {
+  repeated CacheEntry entries = 1;
+}
+
+message BatchPutResponse {
+  bool success = 1;
+}
+
+message EvictResponse {
+  bool success = 1;
+}
